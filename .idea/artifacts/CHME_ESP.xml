@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CHME_ESP">
+    <output-path>$PROJECT_DIR$/jars</output-path>
+    <root id="archive" name="CHME_ESP.jar">
+      <element id="module-output" name="CHME" />
+    </root>
+  </artifact>
+</component>

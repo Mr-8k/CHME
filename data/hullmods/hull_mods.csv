@@ -1,0 +1,71 @@
+name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hiddenEverywhere,cost_frigate,cost_dest,cost_cruiser,cost_capital,script,desc,short,sprite
+# Augments,,,,,,,,,,,,,,,,,,
+Legion Aug,CHME_ESP_Legion_Augment,,,Carrier Augment,"req_spaceport, special, Fighters, merc, non_phase, CHME_ESP_carrier_augment","Fighters, Requires Dock",10000,TRUE,,,0,0,20,40,data.hullmods.augments.CHME_ESP_Legion_Augment,"Increases available fighter bays by %s/%s for cruisers/capital ships.
+
+The additional fighter bays cause additional stress on the fighter command system and on-board fighter manufactory.
+For a non-automated ship, required crew increased by %s per added flight deck.
+
+Can not be installed on a frigate or a destroyer, only one Carrier Augment per ship.","More fighter decks, reduced fighter replacement speed",graphics/icons/skills/coordinated_maneuvers.png
+Focus Aug,CHME_ESP_Focus_Augment,,,Carrier Augment,"req_spaceport, special, Fighters, merc, non_phase, CHME_ESP_carrier_augment","Fighters, Requires Dock",10000,TRUE,,,10,15,20,30,data.hullmods.augments.CHME_ESP_Focus_Augment,"Deploy one single wing with significantly enhanced stats but costs an additional %s ordnance points.
+
+Only one Carrier Augment per ship.",Exchange deck count for one enhanced wing,graphics/hullmods/terminator_core.png
+Alacrity Aug,CHME_ESP_Alacrity_Augment,,,Carrier Augment,"req_spaceport, special, Fighters, merc, non_phase, CHME_ESP_carrier_augment","Fighters, Requires Dock",10000,TRUE,,,10,20,30,40,data.hullmods.augments.CHME_ESP_Alacrity_Augment,"Increases fighter top speed and acceleration by %s and allows zero-flux bonus to take effect at %s flux.
+
+Only one Carrier Augment per ship.",Faster fighters.,graphics/icons/skills/helmsmanship.png
+Control Aug,CHME_ESP_Control_Augment,,,Carrier Augment,"req_spaceport, special, Fighters, merc, non_phase, CHME_ESP_carrier_augment","Support, Fighters, Requires Dock",10000,TRUE,,,10,15,20,30,data.hullmods.augments.CHME_ESP_Control_Augment,"Increases fighter operation range by %s.
+Carrier in-combat sight range increased by %s.
+Increases the command point recovery rate by %s when installed on the flagship.
+
+Only one Carrier Augment per ship.",Long range carrier.,graphics/icons/skills/navigation.png
+Bulwark Aug,CHME_ESP_Bulwark_Augment,,,Carrier Augment,"req_spaceport, special, Fighters, merc, non_phase, CHME_ESP_carrier_augment","Fighters, Requires Dock",10000,TRUE,,,10,20,30,40,data.hullmods.augments.CHME_ESP_Bulwark_Augment,"Reduce fighter operating range to %s.
+
+Fighter damage taken reduced by %s. 
+Fighter non-missile weapon range increased by %s. 
+Fighter missile max speed increased by %s.
+
+Only one Carrier Augment per ship.",Fighter bounded to carrier with greatly enhanced performance,graphics/hullmods/omni_shield_emitter.png
+,,,,,,,,,,,,,,,,,,
+# Generic,,,,,,,,,,,,,,,,,,
+Carrier Overrides,CHME_ESP_CSO,,,CHME,"special, Fighters, offensive, merc, no_build_in, non_phase","Special, Fighters",10000,TRUE,,,10,20,40,60,data.hullmods.CHME_ESP_CSO,"Overclocking the fighter command unit, replacement rate no longer decreases from fighter loss.
+Fighter replacement time reduced by %s.
+Allows the zero-flux engine boost to take effect regardless of flux level.
+
+Reduces the peak performance time by a factor of %s and drastically reduces fighter operating range by %s.","Drastic improvement in performance, much lower peak time.",graphics/hullmods/CHME_ESP_fighter_uplink.png
+Oversized Fighter Ordinance,CHME_ESP_OversizedFighterOrdinance,,,CHME,"Fighters, offensive, merc, non_phase",Fighters,10000,TRUE,,,4,8,12,20,data.hullmods.CHME_ESP_OversizedFighterOrdinance,"Loads fighters with oversized ordnance in exchange for agility.
+
+Fighter rate of fire and ammo regeneration increased by %s.
+Fighter flux dissipation increased by %s.
+Fighter max speed and maneuverability reduced by %s.
+
+The effect does not apply to bombers.",Fighter more firepower but slower speed.,graphics/hullmods/assault_package.png
+Amplified Bomber Payload,CHME_ESP_AmplifiedBomberPayload,,,CHME,"Fighters, offensive, merc, non_phase",Fighters,10000,TRUE,,,10,15,20,30,data.hullmods.CHME_ESP_AmplifiedBomberPayload,"Larger ordinance is packed into newly expanded bomber ammo bays.
+
+Bomber damage increased by %s.
+Bomber speed and maneuverability decreased by %s.
+Launched missile speed and maneuverability decreased by %s.
+
+The effect only applies to bombers.","Bomber damage up, speed down, missile turn rate down.",graphics/icons/skills/missile_specialization_old.png
+LPC Armor Stripping,CHME_ESP_LPCArmorStripping,,,CHME,"Fighters, special, merc, non_phase",Fighters,10000,TRUE,,,2,4,6,10,data.hullmods.CHME_ESP_LPCArmorStripping,"Removes all fighter armor for better movement and flux stats.
+
+For every %s base armor increase:
+
+Max speed by %s.
+Maneuverability by %s.
+Flux capacity by %s.
+Flux dissipationby %s.",Remove fighter armor for better maneuverability and flux status.,graphics/hullmods/compromised_armor.png
+Swarm ECM,CHME_ESP_SwarmECM,,,CHME,"Fighters, merc, non_phase, special","Fighters, Support",10000,TRUE,,,5,10,15,25,data.hullmods.CHME_ESP_SwarmECM,Each active strike craft grants %s ECM rating.,Fighters have ECM.,graphics/icons/skills/mechanical_engineering.png
+Targeting Uplink,CHME_ESP_TargetingUplink,,,CHME,"Fighters, merc, non_phase",Fighters,10000,TRUE,,,2,4,6,10,data.hullmods.CHME_ESP_TargetingUplink,"Establish data link between carrier and its fighters, sharing targeting data to improve weapon range. Bonus is equivalent to benefit granted by the installed range hullmod.",Fighter benefits from carrier targeting unit,graphics/icons/skills/advanced_tactics.png
+,,,,,,,,,,,,,,,,,,
+# My trash,,,,,,,,,,,,,,,,,,
+#LPC Drone Conversion,CHME_ESP_LPCDroneConversion,,,CHME,"special, non_phase, no_build_in",Fighters,10000,,,,5,8,15,20,data.hullmods.CHME_ESP_LPCDroneConversion,"Convert fighters into unmanned drones.
+Crew loss from destroyed fighters reduced by %s.
+Allows the use of manned fighters in automated ships.",Allows regular fighters to be used by automated carriers,graphics/hullmods/CHME_ESP_focus.png
+#Partial Remanualization,CHME_ESP_PartialRemanualization,,,CHME,"special, non_phase, no_build_in","Special, Fighters",10000,,,,5,8,15,20,data.hullmods.CHME_ESP_PartialRemanualization,"Ship is partially remanualized, allowing for manned fighters to be used and human officers assigned.
+All cargo is converted into crew capacity at a %s.
+Automated ships penalty is %s removed.",,graphics/hullmods/CHME_ESP_focus.png
+#Automated Ship,CHME_ESP_automated,,,,,,,,TRUE,,0,0,0,0,data.hullmods.CHME_ESP_automated,"This ship is fully automated, and does not require - and can not take on - any human crew.
+
+Automated ships require specialized equipment and expertise to maintain, resulting in a maximum combat readiness penalty of %s. This penalty can be offset by a fleet commander skilled in the use of automated ships.",Does not require and can not support crew.,graphics/hullmods/CHME_ESP_focus.png
+#Partial Remanualization fake,CHME_ESP_BlackMagic,,,CHME,"special, non_phase, no_build_in","Special, Fighters",10000,,TRUE,TRUE,5,8,15,20,data.hullmods.CHME_ESP_PartialRemanualization,"Ship is partially remanualized, allowing for manned fighters to be used and human officers assigned.
+All cargo is converted into crew capacity at a %s.
+Automated ships penalty is %s removed.",,graphics/hullmods/CHME_ESP_focus.png
