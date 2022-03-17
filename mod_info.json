@@ -3,7 +3,7 @@
   "name":"Carrier Hullmod Expansion",
   "author":"Mr8k",
   "version":"1.0.0",
-  "description":"Similar to modern carriers, none of the poor balance and jank. Simple and effective.",
+  "description":"Similar to modern carriers, none of the jank. Simple and effective.",
   "gameVersion":"0.95.1a-RC6",
   "jars":["jars/CHME_ESP.jar"],
   "modPlugin": "data.scripts.plugins.CHME_ESP_ModPlugin"
