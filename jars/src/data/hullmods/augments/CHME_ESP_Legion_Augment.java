@@ -18,7 +18,8 @@ import static data.scripts.plugins.CHME_ESP_ModPlugin.CHME_ESP_modernIncompatChe
 
 public class CHME_ESP_Legion_Augment extends BaseHullMod {
 
-    public final int PER_DECK_PPL_PENALTY = 20;
+    public static int PER_DECK_PPL_PENALTY = 20;
+    public static float PENALTY_MITIGATION_FACTOR = 0.5F;
     //public final int PER_DECK_MAINT_PENALTY = 5;
 
     private static float getPenaltyMult(MutableShipStatsAPI stats, boolean installed) {
@@ -36,12 +37,12 @@ public class CHME_ESP_Legion_Augment extends BaseHullMod {
             current += increased;
         }
 
-        return (float)current / (float)original;
+        return (((float)current / (float)original) - 1) * PENALTY_MITIGATION_FACTOR + 1 ;
     }
 
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
         HullSize size = stats.getVariant().getHullSize();
-        int original = Math.round(stats.getNumFighterBays().getBaseValue()); //- stats.getVariant().getHullSpec().getBuiltInWings().size();
+        // int original = Math.round(stats.getNumFighterBays().getBaseValue()); //- stats.getVariant().getHullSpec().getBuiltInWings().size();
         int increased = 0;
         if (size == HullSize.CAPITAL_SHIP) {
             increased = 2;
@@ -51,7 +52,9 @@ public class CHME_ESP_Legion_Augment extends BaseHullMod {
 
         stats.getNumFighterBays().modifyFlat(id, increased);
 
-        float penaltyMult = (float)Math.round(stats.getNumFighterBays().getModifiedValue()) / (float)original;
+        float penaltyMult = getPenaltyMult(stats, true);
+                // (float)Math.round(stats.getNumFighterBays().getModifiedValue()) / (float)original;
+
         stats.getFighterRefitTimeMult().modifyMult(id, penaltyMult);
 
         if (stats.getVariant().getHullSpec().getMinCrew() > 0.0F) {
@@ -119,7 +122,7 @@ public class CHME_ESP_Legion_Augment extends BaseHullMod {
         } else if (!CHME_ESP_AugmentChecker(ship, getId())) {
             return ("Only one carrier augment allowed per ship");
         } else if (ship.getMutableStats().getNumFighterBays().getBaseValue() <= (float)ship.getHullSpec().getBuiltInWings().size()) {
-            return "The manufactory cannot sustain all the decks";
+            return "Cannot affect ships with only built in wings";
         } else if (ship.isStationModule()) {
             return "This mod is too complicated to fit into a sub-module";
         } else {
@@ -133,7 +136,7 @@ public class CHME_ESP_Legion_Augment extends BaseHullMod {
             return false;
         } else if (ship == null) {
             return false;
-        } else if (!ship.getVariant().hasHullMod("CHME_ESP_Swarm_Augment")) {
+        } else if (!ship.getVariant().hasHullMod(getId())) {
             return true;
         } else {
             int currentBayCount = ship.getMutableStats().getNumFighterBays().getModifiedInt();
@@ -153,7 +156,7 @@ public class CHME_ESP_Legion_Augment extends BaseHullMod {
 
     public String getCanNotBeInstalledNowReason(ShipAPI ship, MarketAPI marketOrNull, CoreUITradeMode mode) {
         return !super.canBeAddedOrRemovedNow(ship, marketOrNull, mode) ?
-                super.getCanNotBeInstalledNowReason(ship, marketOrNull, mode) : "Can't be removed when bays added by this hullmod still has fighters installed";
+                super.getCanNotBeInstalledNowReason(ship, marketOrNull, mode) : "Can't be removed when bays added by this hullmod still have fighters installed";
     }
 
     public String getId() {

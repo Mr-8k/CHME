@@ -264,7 +264,7 @@ public class CHME_ESP_Focus_Augment extends BaseHullMod {
             return ("Only one carrier augment allowed per ship");
         }
           else if (ship.getHullSpec().getBuiltInWings().size() > 0) {
-            return "The hullmod cannot modify built in wings";
+            return "This hullmod cannot modify built in wings";
 
         } else if (ship.getVariant().getFittedWings().size() > 1 && !ship.getVariant().hasHullMod(getId())) {
             return "Can only affect one wing";
