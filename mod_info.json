@@ -2,7 +2,7 @@
   "id":"CHME_ESP",
   "name":"Carrier Hullmod Expansion",
   "author":"Mr8k",
-  "version":"1.0.0",
+  "version":"1.0.1",
   "description":"Similar to modern carriers, none of the jank. Simple and effective.",
   "gameVersion":"0.95.1a-RC6",
   "jars":["jars/CHME_ESP.jar"],
