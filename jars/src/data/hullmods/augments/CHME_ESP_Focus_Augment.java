@@ -266,7 +266,7 @@ public class CHME_ESP_Focus_Augment extends BaseHullMod {
             return "This hullmod cannot modify built in wings";
 
         } else if (ship.getVariant().getFittedWings().size() > 1 && !ship.getVariant().hasHullMod(getId())) {
-            return "Can only affect one wing";
+            return "Can only affect one wing (remove LPCs to install)";
             }
 
             return super.getUnapplicableReason(ship);

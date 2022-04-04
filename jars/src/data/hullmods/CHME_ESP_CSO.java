@@ -49,7 +49,10 @@ public class CHME_ESP_CSO extends BaseHullMod {
         } else if (!CHME_ESP_modernIncompatChecker(ship)) {
             return false;
 
-        } else return ((CHME_ESP_deckChecker(ship, false)) );
+        } else if (CHME_ESP_deckChecker(ship, false)) {
+            return false;
+        }
+        else return true;
     }
 
 

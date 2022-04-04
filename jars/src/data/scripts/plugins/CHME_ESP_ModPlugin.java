@@ -90,14 +90,14 @@ public class CHME_ESP_ModPlugin extends BaseModPlugin {
 
     public static boolean CHME_ESP_deckChecker (ShipAPI ship, boolean base) {
 
-        boolean applicable = true;
+        boolean applicable = false;
 
         if (base) {
             if (ship.getMutableStats().getNumFighterBays().getBaseValue() < 1)
-                applicable = false;
+                applicable = true;
         } else
             if (ship.getMutableStats().getNumFighterBays().getModifiedValue() < 1)
-                applicable = false;
+                applicable = true;
 
         return applicable;
     }

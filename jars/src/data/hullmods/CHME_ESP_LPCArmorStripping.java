@@ -52,7 +52,7 @@ public class CHME_ESP_LPCArmorStripping extends BaseHullMod {
     }
 
     public String getDescriptionParam(int index, ShipAPI.HullSize hullSize, ShipAPI ship) {
-        switch(index) {
+        switch (index) {
             case 0:
                 return String.valueOf(Math.round(ARMOR_DIV));
             case 1:
@@ -75,8 +75,8 @@ public class CHME_ESP_LPCArmorStripping extends BaseHullMod {
                 tooltip.addSpacer(6.0F);
                 tooltip.addSectionHeading("Current Bonus", Alignment.MID, 0.0F);
                 List<String> fighters = ship.getVariant().getFittedWings();
-                for (String fighter: fighters
-                     ) {
+                for (String fighter : fighters
+                ) {
                     ShipVariantAPI fighterVariant = Global.getSettings().getFighterWingSpec(fighter).getVariant();
                     String fighterName = fighterVariant.getFullDesignationWithHullName();
                     ShipHullSpecAPI fighterHullspec = fighterVariant.getHullSpec();
@@ -86,16 +86,16 @@ public class CHME_ESP_LPCArmorStripping extends BaseHullMod {
                     float fighterCap = fighterHullspec.getFluxCapacity();
                     float fighterDiss = fighterHullspec.getFluxDissipation();
 
-                    float bonusMult =  fighterArmor / ARMOR_DIV;
+                    float bonusMult = fighterArmor / ARMOR_DIV;
 
                     tooltip.addSpacer(6.0F);
                     tooltip.addPara("%s: ", 0, Color.ORANGE, fighterName);
-                    tooltip.addPara("Max speed %s.", 0, Color.ORANGE, String.valueOf(Math.round(SPD_BONUS_FLAT*bonusMult)));
+                    tooltip.addPara("Max speed %s.", 0, Color.ORANGE, String.valueOf(Math.round(SPD_BONUS_FLAT * bonusMult)));
                     tooltip.addPara("Maneuverability %s.", 0, Color.ORANGE, (Math.round(AGI_BONUS_PERCENT * bonusMult)) + "%");
 
-                    tooltip.addPara("Flux capacity %s (base %s).", 0, Color.ORANGE, String.valueOf(Math.round(FLUX_CAP_BONUS_FLAT*bonusMult)),
+                    tooltip.addPara("Flux capacity %s (base %s).", 0, Color.ORANGE, String.valueOf(Math.round(FLUX_CAP_BONUS_FLAT * bonusMult)),
                             String.valueOf(Math.round(fighterCap)));
-                    tooltip.addPara("Flux dissipation %s (base %s).", 0, Color.ORANGE, String.valueOf(Math.round(FLUX_DIS_BONUS_FLAT*bonusMult)),
+                    tooltip.addPara("Flux dissipation %s (base %s).", 0, Color.ORANGE, String.valueOf(Math.round(FLUX_DIS_BONUS_FLAT * bonusMult)),
                             String.valueOf(Math.round(fighterDiss)));
                 }
             }
@@ -113,14 +113,19 @@ public class CHME_ESP_LPCArmorStripping extends BaseHullMod {
         } else if (!CHME_ESP_modernIncompatChecker(ship)) {
             return false;
 
-        } else return ((CHME_ESP_deckChecker(ship, false)) );
+        } else if (CHME_ESP_deckChecker(ship, false)) {
+            return false;
+        }
+        else return true;
     }
+
+
 
 
     public String getUnapplicableReason(ShipAPI ship) {
         if (!super.isApplicableToShip(ship)) {
             return super.getUnapplicableReason(ship);
-        } else if ((CHME_ESP_deckChecker(ship, false)) ) {
+        } else if (CHME_ESP_deckChecker(ship, false)) {
             return ("Only applicable to carriers");
         }
         return super.getUnapplicableReason(ship);
