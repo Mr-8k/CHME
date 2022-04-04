@@ -5,8 +5,7 @@ import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
 
-import static data.scripts.plugins.CHME_ESP_ModPlugin.CHME_ESP_AugmentChecker;
-import static data.scripts.plugins.CHME_ESP_ModPlugin.CHME_ESP_modernIncompatChecker;
+import static data.scripts.plugins.CHME_ESP_ModPlugin.*;
 
 public class CHME_ESP_Bulwark_Augment extends BaseHullMod {
 
@@ -54,7 +53,7 @@ public class CHME_ESP_Bulwark_Augment extends BaseHullMod {
             return false;
         } else if (!CHME_ESP_AugmentChecker(ship, getId()) || !CHME_ESP_modernIncompatChecker(ship)) {
             return false;
-        } else if (ship.getMutableStats().getNumFighterBays().getBaseValue() < 1) {
+        } else if (CHME_ESP_deckChecker(ship, false))  {
             return false;
         }
         return true;
@@ -65,7 +64,7 @@ public class CHME_ESP_Bulwark_Augment extends BaseHullMod {
             return super.getUnapplicableReason(ship);
         } else if (!CHME_ESP_AugmentChecker(ship, getId())) {
             return ("Only one carrier augment allowed per ship");
-        } else if (ship.getMutableStats().getNumFighterBays().getBaseValue() < 1) {
+        } else if (CHME_ESP_deckChecker(ship, false))  {
             return ("Only applicable to carriers");
         }
         return super.getUnapplicableReason(ship);

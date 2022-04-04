@@ -11,6 +11,7 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import static data.scripts.plugins.CHME_ESP_ModPlugin.CHME_ESP_deckChecker;
 import static data.scripts.plugins.CHME_ESP_ModPlugin.CHME_ESP_modernIncompatChecker;
 
 public class CHME_ESP_TargetingUplink extends BaseHullMod {
@@ -80,14 +81,14 @@ public class CHME_ESP_TargetingUplink extends BaseHullMod {
         } else if (!CHME_ESP_modernIncompatChecker(ship)) {
             return false;
 
-        } else return !(ship.getMutableStats().getNumFighterBays().getBaseValue() < 1);
+        } else return (CHME_ESP_deckChecker(ship, false)) ;
     }
 
 
     public String getUnapplicableReason(ShipAPI ship) {
         if (!super.isApplicableToShip(ship)) {
             return super.getUnapplicableReason(ship);
-        } else if (ship.getMutableStats().getNumFighterBays().getBaseValue() < 1) {
+        } else if (CHME_ESP_deckChecker(ship, false))  {
             return ("Only applicable to carriers");
         }
         return super.getUnapplicableReason(ship);

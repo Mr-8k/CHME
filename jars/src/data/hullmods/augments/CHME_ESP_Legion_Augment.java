@@ -13,8 +13,7 @@ import com.fs.starfarer.api.ui.TooltipMakerAPI;
 
 import java.awt.*;
 
-import static data.scripts.plugins.CHME_ESP_ModPlugin.CHME_ESP_AugmentChecker;
-import static data.scripts.plugins.CHME_ESP_ModPlugin.CHME_ESP_modernIncompatChecker;
+import static data.scripts.plugins.CHME_ESP_ModPlugin.*;
 
 public class CHME_ESP_Legion_Augment extends BaseHullMod {
 
@@ -91,7 +90,7 @@ public class CHME_ESP_Legion_Augment extends BaseHullMod {
     public boolean isApplicableToShip(ShipAPI ship) {
         if (!super.isApplicableToShip(ship)) {
             return false;
-        } else if (ship.getMutableStats().getNumFighterBays().getBaseValue() < 1) {
+        } else if (CHME_ESP_deckChecker(ship, true))  {
             return false;
         } else if (!CHME_ESP_AugmentChecker(ship, getId()) || !CHME_ESP_modernIncompatChecker(ship)) {
             return false;
@@ -117,8 +116,8 @@ public class CHME_ESP_Legion_Augment extends BaseHullMod {
     public String getUnapplicableReason(ShipAPI ship) {
         if (!super.isApplicableToShip(ship)) {
             return super.getUnapplicableReason(ship);
-        } else if (ship.getMutableStats().getNumFighterBays().getBaseValue() < 1) {
-            return ("Only applicable to carriers");
+        } else if (CHME_ESP_deckChecker(ship, true))  {
+            return ("Only applicable to non-makeshift carriers");
         } else if (!CHME_ESP_AugmentChecker(ship, getId())) {
             return ("Only one carrier augment allowed per ship");
         } else if (ship.getMutableStats().getNumFighterBays().getBaseValue() <= (float)ship.getHullSpec().getBuiltInWings().size()) {

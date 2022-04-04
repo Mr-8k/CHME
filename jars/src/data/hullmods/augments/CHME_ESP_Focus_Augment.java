@@ -16,8 +16,7 @@ import data.scripts.listeners.CHME_ESP_Focus_AugmentGlowingEffectListener;
 
 import java.awt.*;
 
-import static data.scripts.plugins.CHME_ESP_ModPlugin.CHME_ESP_AugmentChecker;
-import static data.scripts.plugins.CHME_ESP_ModPlugin.CHME_ESP_modernIncompatChecker;
+import static data.scripts.plugins.CHME_ESP_ModPlugin.*;
 
 public class CHME_ESP_Focus_Augment extends BaseHullMod {
 
@@ -236,7 +235,7 @@ public class CHME_ESP_Focus_Augment extends BaseHullMod {
         if (!super.isApplicableToShip(ship)) {
             return false;
 
-        } else if (ship.getMutableStats().getNumFighterBays().getBaseValue() < 1) {
+        } else if (CHME_ESP_deckChecker(ship, false))  {
             return false;
 
         } else if (!CHME_ESP_AugmentChecker(ship, getId()) || !CHME_ESP_modernIncompatChecker(ship)) {
@@ -257,7 +256,7 @@ public class CHME_ESP_Focus_Augment extends BaseHullMod {
         if (!super.isApplicableToShip(ship)) {
             return super.getUnapplicableReason(ship);
 
-        } else if (ship.getMutableStats().getNumFighterBays().getBaseValue() < 1) {
+        } else if (CHME_ESP_deckChecker(ship, false))  {
             return ("Only applicable to carriers");
 
         } else if (!CHME_ESP_AugmentChecker(ship, getId()) || !CHME_ESP_modernIncompatChecker(ship)) {
