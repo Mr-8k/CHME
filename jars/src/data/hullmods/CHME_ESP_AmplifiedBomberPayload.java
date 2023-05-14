@@ -42,9 +42,9 @@ public class CHME_ESP_AmplifiedBomberPayload extends BaseHullMod {
             case 0:
                 return Math.round(DAMAGE_PERCENT) + "%";
             case 1:
-                return Math.round(AGILITY_MULT * 100) + "%";
+                return Math.round((AGILITY_MULT * 100) * -1 + 100) + "%";
             case 2:
-                return Math.round(MISSILE_AGILITY_MULT * 100) + "%";
+                return Math.round((MISSILE_AGILITY_MULT * 100) * -1 + 100) + "%";
             default:
                 return null;
         }
